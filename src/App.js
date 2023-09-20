@@ -1,24 +1,37 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import myNotes from './MyNotes'
+import NotesList from './components/NotesList';
+import {noteContext} from './Helpers/Contexts'
+import Search from './components/Search';
+import Header from './components/Header';
 
 function App() {
+  const [notes, setNotes] = useState(myNotes)
+  const [search, setSearch] = useState('')
+
+  const handleSearch = (value) => {
+    // const filtered = notes.filter(note => note.text.toLowerCase().includes(value.toLowerCase()))
+    setSearch(value)
+  }
+
+  const [darkMode, setDarkMode] = useState(false)
+
+  const handleDarkMode = () => {
+    setDarkMode(!darkMode)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+    <noteContext.Provider value={{notes, setNotes, search, handleDarkMode}}>
+    <div className={`${darkMode ? 'darkMode': 'myContainer'}`} >
+      <div className={'container'}>
+        <Header/>
+        <Search handleSearch={handleSearch}/>
+        <NotesList/>
+      </div>
+    </div> 
+    </noteContext.Provider>
   );
 }
 

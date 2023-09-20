@@ -1,38 +1,111 @@
-.App {
-  text-align: center;
+*{
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body{
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+.container{
+    padding:0 15px;
+    margin: 0 auto;
+    min-height: 100vh;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
 }
 
-.App-link {
-  color: #61dafb;
+
+/* Simple dark mode */
+
+.darkMode{
+    background-color: rgb(0, 0, 0, 0.6);
+    
+}
+.darkMode h1{
+    color:white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Simple dark mode */
+.notesList{
+    display: grid;
+    gap:1rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr))
 }
+
+
+/* Search components */
+.search{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5em;
+    background-color: rgb(233,233,233);
+    padding:5px;
+    border-radius:10px;
+}
+
+.search input{
+    border:none;
+    background-color: transparent;
+    outline:none;
+    padding: 5px;
+}
+
+/* Notes styles */
+.note{
+    background-color: #fef68a;
+    padding: 1rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height:170px;
+    white-space: pre-wrap;
+}
+
+
+/* Adding Notes */
+
+.note.new{
+    background-color: #67d7cc;
+}
+
+textarea{
+    background-color: transparent;
+    resize: none;
+    padding:10px;
+    border:none;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+textarea:focus{
+    outline:none;
+}
+.save{
+    background-color: #e1e1e1;
+    border:none;
+    border-radius: 15px;
+    padding:5px 10px;
+    cursor:pointer;
+    transition: all .4s;
+}
+.save:hover{
+    background: #fff8f8;
+}
+
+.noteFooter{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.deleteIcon{
+    cursor:pointer;
+}
+
